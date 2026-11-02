@@ -119,6 +119,11 @@ class Version:
     def __hash__(self):
         return hash((self._core_key(), tuple(self.pre or [])))
 
+    @property
+    def is_prerelease(self):
+        """True when the version has a prerelease part (e.g. 1.0.0-rc.1)."""
+        return self.pre is not None
+
     def __str__(self):
         return self.text
 
